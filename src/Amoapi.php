@@ -50,6 +50,7 @@ class Amoapi
 	private $services = [
 		'account',
 		'leads',
+		'incomingleads',
 		'contacts',
 		'companies',
 		'tasks',
@@ -67,7 +68,7 @@ class Amoapi
 		'id' => null,
 		'modified_at' => 0
 	];
-	
+
     /**
      * Constructor
 	 * @param array $account
@@ -76,7 +77,7 @@ class Amoapi
     {
 		$this->_account = $account;
     }
-	
+
     /**
      * Get account auth data
 	 * @param string|null $key
@@ -217,7 +218,7 @@ class Amoapi
 		}
 		return self::$_instances[$account_id];
 	}
-	
+
     /**
      * Call Service Methods
 	 * @param string $service_name
@@ -234,7 +235,7 @@ class Amoapi
 		}
 		return $service;
 	}
-	
+
     /**
      * Get Service
 	 * @param string $target
