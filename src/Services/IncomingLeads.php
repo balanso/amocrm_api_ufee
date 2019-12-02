@@ -12,7 +12,7 @@ class IncomingLeads extends \Ufee\Amo\Base\Services\LimitedList
 			'update' => ['id', 'updated_at']
 		];
 	protected
-		$entity_key = 'incomingleads',
+		$entity_key = 'incomingLeads',
 		$entity_model = '\Ufee\Amo\Models\IncomingLead',
 		$entity_collection = '\Ufee\Amo\Collections\IncomingLeadCollection',
 		$cache_time = false;

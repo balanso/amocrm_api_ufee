@@ -50,7 +50,7 @@ class Amoapi
 	private $services = [
 		'account',
 		'leads',
-		'incomingleads',
+		'incomingLeads',
 		'contacts',
 		'companies',
 		'tasks',
