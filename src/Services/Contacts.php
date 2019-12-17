@@ -7,9 +7,9 @@ use Ufee\Amo\Base\Services\Traits;
 
 class Contacts extends \Ufee\Amo\Base\Services\MainEntity
 {
-	use Traits\SearchByName, Traits\SearchByPhone, Traits\SearchByEmail;
+	use Traits\SearchByName, Traits\SearchByPhone, Traits\SearchByEmail, Traits\SearchByPhoneEmail;
 
-	protected static 
+	protected static
 		$_require = [
 			'add' => ['name'],
 			'update' => ['id', 'updated_at']
@@ -19,7 +19,7 @@ class Contacts extends \Ufee\Amo\Base\Services\MainEntity
 		$entity_model = '\Ufee\Amo\Models\Contact',
 		$entity_collection = '\Ufee\Amo\Collections\ContactCollection',
 		$cache_time = false;
-	
+
     /**
      * Get full
 	 * @return Collection

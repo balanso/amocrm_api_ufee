@@ -9,7 +9,7 @@ class Companies extends \Ufee\Amo\Base\Services\MainEntity
 {
 	use Traits\SearchByName, Traits\SearchByPhone, Traits\SearchByEmail;
 
-	protected static 
+	protected static
 		$_require = [
 			'add' => ['name'],
 			'update' => ['id', 'updated_at']
@@ -19,7 +19,7 @@ class Companies extends \Ufee\Amo\Base\Services\MainEntity
 		$entity_model = '\Ufee\Amo\Models\Company',
 		$entity_collection = '\Ufee\Amo\Collections\CompanyCollection',
 		$cache_time = false;
-	
+
     /**
      * Get full
 	 * @return Collection

@@ -7,9 +7,9 @@ use Ufee\Amo\Base\Services\Traits;
 
 class Leads extends \Ufee\Amo\Base\Services\MainEntity
 {
-	use Traits\SearchByName;
-	
-	protected static 
+	use Traits\SearchByName, Traits\SearchByPhoneEmail;
+
+	protected static
 		$_require = [
 			'add' => ['name'],
 			'update' => ['id', 'updated_at']
