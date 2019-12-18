@@ -7,7 +7,7 @@ use Ufee\Amo\Base\Services\Traits;
 
 class Leads extends \Ufee\Amo\Base\Services\MainEntity
 {
-	use Traits\SearchByName, Traits\SearchByPhoneEmail;
+	use Traits\SearchByName;
 
 	protected static
 		$_require = [
