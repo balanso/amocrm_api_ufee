@@ -26,6 +26,7 @@ class Lead extends \Ufee\Amo\Base\Models\ModelWithCF
 			'customFields',
 			'contacts',
 			'contact',
+			'company_name',
 			'company',
 			'notes',
 			'tasks'
@@ -72,6 +73,7 @@ class Lead extends \Ufee\Amo\Base\Models\ModelWithCF
 		$this->attributes['company_id'] = null;
 		if (isset($data->company->id)) {
 			$this->attributes['company_id'] = $data->company->id;
+			$this->attributes['company_name'] = $data->company->name;
 		}
 		$this->attributes['company'] = null;
 
@@ -124,6 +126,9 @@ class Lead extends \Ufee\Amo\Base\Models\ModelWithCF
 		$company->responsible_user_id = $this->responsible_user_id;
 		$company->attachLead($this);
 
+		if ($this->hasMainContact()) {
+			$company->attachContact($this->main_contact_id);
+		}
 		$company->onCreate(function(&$model) use (&$lead) {
 			$lead->attachCompany($model);
 		});

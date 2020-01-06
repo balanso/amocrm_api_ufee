@@ -32,6 +32,7 @@ class QueryModel
 			'response'
 		],
 		$attributes = [],
+		$retries = 0,
 		$cookie = [];
 		
     /**
@@ -81,6 +82,8 @@ class QueryModel
 			CURLOPT_SSL_VERIFYPEER => false,
 			CURLOPT_RETURNTRANSFER => true,
 			CURLOPT_FOLLOWLOCATION => true,
+			CURLOPT_CONNECTTIMEOUT => 30,
+			CURLOPT_TIMEOUT => 60,
 			CURLOPT_SSLVERSION => CURL_SSLVERSION_TLSv1_2
 		]);
 		if ($instance->hasSession()) {
