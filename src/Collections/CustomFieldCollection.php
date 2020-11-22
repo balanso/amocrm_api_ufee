@@ -22,9 +22,11 @@ class CustomFieldCollection extends CollectionWrapper
         13 => 'Ufee\Amo\Base\Models\CustomField\SmartAddressField',
         14 => 'Ufee\Amo\Base\Models\CustomField\BirthDayField',
         15 => 'Ufee\Amo\Base\Models\CustomField\JurField',
+		16 => 'Ufee\Amo\Base\Models\CustomField\ItemsField',
         17 => 'Ufee\Amo\Base\Models\CustomField\OrgField',
         18 => 'Ufee\Amo\Base\Models\CustomField\CategoryField',
-        19 => 'Ufee\Amo\Base\Models\CustomField\SelectField'
+        19 => 'Ufee\Amo\Base\Models\CustomField\CalendarField',
+		20 => 'Ufee\Amo\Base\Models\CustomField\NumericField'
 	];
 
     /**
@@ -35,7 +37,9 @@ class CustomFieldCollection extends CollectionWrapper
     public function __construct(Array $elements = [], \Ufee\Amo\Models\Account &$account)
     {
 		$this->collection = new \Ufee\Amo\Base\Collections\Collection($elements);
-		$this->collection->each(function(&$item) {
+		$client_id = $account->service->instance->getAuth('id');
+		$this->collection->each(function(&$item) use(&$client_id) {
+			$item->client_id = $client_id;
 			$item = new CustomField($item);
 		});
 		$this->attributes['account'] = $account;

@@ -1,10 +1,10 @@
 <?php
 /**
- * amoCRM Entity custom field type - 6
+ * amoCRM Entity custom field type - 19
  */
 namespace Ufee\Amo\Base\Models\CustomField;
 
-class DateField extends EntityField
+class CalendarField extends EntityField
 {
 	/**
 	 * Get formatted date
