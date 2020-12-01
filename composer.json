@@ -1,5 +1,5 @@
 {
-    "name": "balanso/ufee/amoapi",
+    "name": "ufee/amoapi",
     "homepage": "https://github.com/ufee",
     "description": "amoCRM API Client (https://www.amocrm.ru/developers/content/platform/abilities/)",
     "type": "library",
