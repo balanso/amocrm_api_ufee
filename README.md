@@ -768,3 +768,6 @@ $amo->ajax()->post($url = '/ajax/example', $data = [], $args = [], $post_type = 
 $amo->ajax()->postJson($url = '/ajax/example', $data = [], $args = []);
 $amo->ajax()->patch($url = '/ajax/example', $data = [], $args = []);
 ```
+
+Этот форк содержит функционал входящих неотсортированных сделок
+incomingLead.
