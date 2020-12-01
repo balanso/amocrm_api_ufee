@@ -46,6 +46,7 @@ class ApiClient
 	protected $services = [
 		'account',
 		'leads',
+		'incomingLeads',
 		'contacts',
 		'companies',
 		'tasks',
@@ -58,7 +59,7 @@ class ApiClient
 		'ajax'
 	];
 	protected $_account;
-	
+
 	/**
 	 * Call Service Methods
 	 * @param string $service_name
@@ -75,7 +76,7 @@ class ApiClient
 		}
 		return $service;
 	}
-	
+
 	/**
 	 * Has account isset
 	 * @param string $client_id
@@ -85,7 +86,7 @@ class ApiClient
 	{
 		return isset(self::$_instances[$client_id]);
 	}
-	
+
 	/**
 	 * Has account isset
 	 * @param string $client_id
@@ -98,7 +99,7 @@ class ApiClient
 		}
 		unset(self::$_instances[$client_id]);
 	}
-	
+
 	/**
 	 * Get Service
 	 * @param string $target
