@@ -47,8 +47,6 @@ class MysqlStorage extends AbstractStorage
 			if ($this->options['check_post_data_duplicate'] && !empty($_POST)) {
 				$this->duplicateCheck($values->last_input, $key);
 			}
-
-			$conn->close();
 		}
 	}
 
@@ -78,21 +76,18 @@ class MysqlStorage extends AbstractStorage
 			$result = false;
 		}
 
-		$conn->close();
-
 		return $result;
 	}
 
 	protected function duplicateCheck($last_input, $row_key)
 	{
-		$conn = $this->options['connection'];
 		$input_json_data = json_encode($_POST);
 
 		if ($last_input === $input_json_data) {
-			$conn->close();
 			exit('Data already recieved');
 		}
 
+		$conn = $this->options['connection'];
 		$query = $conn->prepare("UPDATE oauth SET last_input=? WHERE id=?");
 
 		if ($query) {
