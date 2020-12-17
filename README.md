@@ -209,7 +209,7 @@ $amo->queries->cachePath('path_to/cache');
 ```
 Пользовательская отладка запросов (обновлено с вводом oAuth)
 ```php
-$amo->queries->listen(function(\Ufee\Amo\Base\Models\QueryModel $query) {
+$amo->queries->listen(function(\Ufee\Amo\Base\Models\QueryModel $b) {
     echo $query->startDate().' - ['.$query->method.'] '.$query->getUrl()."\n";
     print_r($query->headers);
     print_r(count($query->json_data) ? $query->json_data : $query->post_data);
@@ -769,5 +769,6 @@ $amo->ajax()->postJson($url = '/ajax/example', $data = [], $args = []);
 $amo->ajax()->patch($url = '/ajax/example', $data = [], $args = []);
 ```
 
-Этот форк содержит функционал входящих неотсортированных сделок
-incomingLead.
+- Этот форк содержит функционал входящих неотсортированных сделок
+incomingLead
+- Добавлена поддержка MySQL
