@@ -26,7 +26,8 @@ class SelectField extends EntityField
     {
         $enum = array_search($value, get_object_vars($this->field->enums));
         if ($enum === false) {
-            throw new \Exception('Invalid value: "'.$value.'" for cfield "'.$this->name.'" (enum not found)');
+        	return $this;
+//            throw new \Exception('Invalid value: "'.$value.'" for cfield "'.$this->name.'" (enum not found)');
         }
 		$this->values = [
 			(object)['value' => $value, 'enum' => $enum]
@@ -41,7 +42,8 @@ class SelectField extends EntityField
     public function setEnum($enum)
     {
         if (!array_key_exists($enum, get_object_vars($this->field->enums))) {
-            throw new \Exception('Invalid enum: "'.$enum.'" for cfield "'.$this->name.'" (not found)');
+			return $this;
+//            throw new \Exception('Invalid enum: "'.$enum.'" for cfield "'.$this->name.'" (not found)');
         }
 		$this->values = [
 			(object)['value' => '', 'enum' => $enum]
