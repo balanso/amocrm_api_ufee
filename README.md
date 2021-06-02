@@ -197,7 +197,7 @@ $amo->queries->logs('path_to_log/queries'); // to custom path
 ```
 Не более 1 запроса за заданное время, в секундах
 ```php
-$amo->queries->setDelay(0.5); // default: 1 sec
+$amo->queries->setDelay(0.5); // default: 0.15 sec
 ```
 Запрос /api/v2/account кешируется в файлах, время указывается в секундах
 ```php
@@ -205,15 +205,20 @@ $amo->queries->setDelay(0.5); // default: 1 sec
 ```
 Свой путь для кеширования запросов
 ```php
-$amo->queries->cachePath('path_to/cache');
+\Ufee\Amo\Collections\QueryCollection::setCachePath('path_to/cache');
 ```
 Пользовательская отладка запросов (обновлено с вводом oAuth)
 ```php
-$amo->queries->listen(function(\Ufee\Amo\Base\Models\QueryModel $b) {
+$amo->queries->listen(function(\Ufee\Amo\Base\Models\QueryModel $query) {
+    $code = $query->response->getCode();
     echo $query->startDate().' - ['.$query->method.'] '.$query->getUrl()."\n";
     print_r($query->headers);
-    print_r(count($query->json_data) ? $query->json_data : $query->post_data);
-    echo $query->endDate().' - ['.$query->response->getCode().'] '.$query->response->getData()."\n\n";
+    if ($code === 0) {
+        echo $query->response->getError()."\n\n";
+    } else {
+        print_r(count($query->json_data) ? $query->json_data : $query->post_data);
+        echo $query->endDate().' - ['.$query->response->getCode().'] '.$query->response->getData()."\n\n";
+    }
 });
 ```
 ## Поиск сущностей
@@ -768,7 +773,3 @@ $amo->ajax()->post($url = '/ajax/example', $data = [], $args = [], $post_type = 
 $amo->ajax()->postJson($url = '/ajax/example', $data = [], $args = []);
 $amo->ajax()->patch($url = '/ajax/example', $data = [], $args = []);
 ```
-
-- Этот форк содержит функционал входящих неотсортированных сделок
-incomingLead
-- Добавлена поддержка MySQL
